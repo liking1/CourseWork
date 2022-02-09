@@ -1,0 +1,16 @@
+﻿@model IEnumerable<PizzaOrder.Models.Order>
+
+<h1 class="mb-5">All orders</h1>
+<div style="display: flex; flex-direction: row; gap: 30px; flex-wrap: wrap;">
+    @if (Model.Any())
+    {
+        @foreach (var order in Model)
+        {
+            <partial name="_OrderCartPartial" model="@order" />
+        }
+    }
+    else
+    {
+        <h1>List is empty!</h1>
+    }
+</div>

@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityUser>
+<div style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif"">
+    @if (Model != null)
+    {
+    <h2 style="margin-top: 100px;">User list</h2>
+    <table class="table">
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Email</td>
+                <td>
+                    <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-userid="@user.Id">Access</a>
+                </td>
+            </tr>
+        }
+    </table>
+    }
+</div>
+else
+{
+    <h1>Sorry, you have null!</h1>
+}

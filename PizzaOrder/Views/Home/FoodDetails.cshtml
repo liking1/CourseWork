@@ -1,0 +1,25 @@
+﻿@model PizzaOrder.Models.ViewModel.FoodDetailsViewModel;
+
+<h1>Деталі продукту</h1>
+<h2 class="text-center">@Model.Food.Title</h2>
+<hr />
+<div class="row">
+    <div class="col-12 mb-5">
+        @Model.Food.Description
+    </div>
+    <div class="col-6">
+        <a asp-action="Index" class="btn btn-dark w-100"><i class="fas fa-arrow-left"></i> Назад</a>
+    </div>
+    @if (Model.IsAddedToCart)
+    {
+        <div class="col-6">
+            <a asp-action="RemoveFromCart" asp-route-id="@Model.Food.Id" class="btn btn-danger w-100 text-white"><i class="fas fa-cart-plus"></i> Remove</a>
+        </div>
+    }
+    else
+    {
+        <div class="col-6">
+            <a asp-action="AddToCart" asp-route-id="@Model.Food.Id" class="btn btn-success w-100 text-white"><i class="fas fa-cart-plus"></i> Add</a>
+        </div>
+    }
+</div>

@@ -1,0 +1,36 @@
+﻿@model PizzaOrder.Models.Order
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+
+<div class="card" style="width: 18rem; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif">
+    <div class="card-body">
+        <h5 class="card-title"><span class="font-weight-bold">Name:</span> @Model.Name</h5>
+        <h5 class="card-title"><span class="font-weight-bold">Surname:</span> @Model.Surname</h5>
+        <h5 class="card-title"><span class="font-weight-bold">Phone:</span> @Model.Phone</h5>
+        <h5 class="card-title"><span class="font-weight-bold">Address:</span> @Model.Address</h5>
+        <h5 class="card-title">
+            <span class="font-weight-bold">Order:</span>
+            @if (Model.Food != null)
+            {
+                @Model.Food.Title
+            }
+        </h5>
+        @if (Model.NonCashCalculation == true)
+        {
+            <h5 class="card-title"><span class="font-weight-bold">Type of payment:</span> cash</h5>
+        }
+        @if (Model.CashSettlement == true)
+        {
+            <h5 class="card-title"><span class="font-weight-bold">Type of payment:</span> card</h5>
+        }
+    </div>
+    <div class="btn-group">
+        @if (User.IsInRole("admin"))
+        {
+            <a asp-controller="Order" asp-action="Delete" asp-route-id="@Model.OrderId" class="btn btn-danger">Delete</a>
+            <a asp-controller="Order" asp-action="Edit" asp-route-id="@Model.OrderId" class="btn btn-danger">Edit</a>
+        }
+    </div>
+</div>

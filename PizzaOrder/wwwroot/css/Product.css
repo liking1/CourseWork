@@ -1,0 +1,4 @@
+﻿#pizza-cart:hover {
+    min-width: 270px;
+    transition: 0.5s;
+}

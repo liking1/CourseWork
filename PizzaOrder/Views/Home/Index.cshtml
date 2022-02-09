@@ -1,0 +1,50 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@model IEnumerable<PizzaOrder.Models.Food>;
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 20px; ">
+
+    @if (Model.Any())
+    {
+        @foreach (var food in Model)
+        {
+            <partial name="_PizzaCartPartial" model="@food" />
+        }
+    }
+    else
+    {
+        <h1><span style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: white;">List is empty!</span></h1>
+    }
+</div>
+
+@section Scripts {
+
+<script>
+    @*function confirmDelete(carId) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: '@Url.Action("Delete", "Car")',
+                        type: 'GET',
+                        dataType: 'json',
+                        data: { id: carId },
+                        cache: false
+                    });
+                }
+            })
+        }*@
+</script>
+}

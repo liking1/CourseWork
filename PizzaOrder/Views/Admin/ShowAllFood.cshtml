@@ -1,0 +1,39 @@
+﻿@model IEnumerable<PizzaOrder.Models.Food>
+
+@{
+    ViewData["Title"] = "All foods";
+}
+
+<div>
+    <h1>All foods</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <td class="font-weight-bold" scope="col">Title</td>
+                <td class="font-weight-bold" scope="col">Description</td>
+                <td class="font-weight-bold" scope="col">Weight</td>
+                <td class="font-weight-bold" scope="col">Price</td>
+                <td class="font-weight-bold" scope="col">Image</td>
+                <td class="font-weight-bold" scope="col">Action</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var food in Model)
+            {
+                <tr>
+                    <td>@food.Title</td>
+                    <td>@food.Description</td>
+                    <td>@food.Weight</td>
+                    <td>@food.Price</td>
+                    <td><img src="@food.Image" width="100px" height="50px"></td>
+                    <td>
+                        <div class="btn-group">
+                            <a asp-controller="Admin" asp-action="EditFood" asp-route-id="@food.Id" class="btn btn-secondary">Edit</a>
+                            <a asp-controller="Admin" asp-action="DeleteFood" onclick="confirmDelete()" asp-route-id="@food.Id" class="btn btn-danger">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

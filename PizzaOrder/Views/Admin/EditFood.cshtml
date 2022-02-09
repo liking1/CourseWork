@@ -1,0 +1,60 @@
+﻿@model PizzaOrder.Models.Food;
+
+@{
+    ViewData["Title"] = "Edit Food";
+}
+
+<div style="margin-top: 100px;">
+    <form method="post" asp-action="EditFood">
+        <h2 class="mb-3">Create a new track</h2>
+        <div class="form-group row">
+            <label asp-for="Title" class="col-4"></label>
+            <input id="modelInput" asp-for="Title" class="form-control col-8">
+            <span asp-validation-for="Title" class="offset-4 text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label asp-for="Description" class="col-4"></label>
+            <input asp-for="Description" class="form-control col-8">
+            <span asp-validation-for="Description" class="offset-4 text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label asp-for="CategoryId" class="col-4"></label>
+            <select asp-for="CategoryId" asp-items="@ViewBag.CategoryList" class="col-8">
+                <option disabled>--Select Category--</option>
+            </select>
+            <span asp-validation-for="CategoryId" class="offset-4 text-danger"></span>
+        </div>  
+        <div class="form-group row">
+            <label asp-for="Price" class="col-4"></label>
+            <input asp-for="Price" class="form-control col-8">
+            <span asp-validation-for="Price" class="offset-4 text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label asp-for="Weight" class="col-4"></label>
+            <input asp-for="Weight" class="form-control col-8">
+            <span asp-validation-for="Weight" class="offset-4 text-danger"></span>
+        </div>
+         <div class="form-group row">
+            <label asp-for="Image" class="col-4"></label>
+            <input asp-for="Image" class="form-control col-8">
+            <span asp-validation-for="Image" class="offset-4 text-danger"></span>
+        </div>
+        <div class="form-group row mb-5">
+            <a asp-controller="Category" class="col-6" asp-action="Index">Edit categories</a>
+        </div>
+        <div class="form-group row">
+            <div class="col-6">
+                <input type="submit" onclick="validateInputs()" class="btn btn-success w-100" value="Update" />
+            </div>
+            <div class="col-6">
+                <a asp-action="Index" class="btn btn-dark w-100">Back</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+@* Client Validation *@
+@section Scripts
+{
+    @{ <partial name="_ValidationScriptsPartial.cshtml"/> }
+}

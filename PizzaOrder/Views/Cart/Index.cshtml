@@ -1,0 +1,31 @@
+﻿@model PizzaOrder.Models.ViewModel.CartListViewModel;
+
+<div class="card text-center">
+    <div class="card-header">
+        Selected products for order
+    </div>
+    <div class="card-body">
+
+        <ul class="list-group mb-2" style="list-style-type: none;">
+            @if(Model.Foods.Any())
+            {
+                @foreach (var car in Model.Foods)
+                {
+                    <li class="list-group-item mb-3" style="background-color: #E5E7E9">@car.Title @car.Price grn</li>
+                }
+            }
+            else
+            {
+                <li><h1>You didn't add nothing.</h1></li>
+            }
+        </ul>
+        @if(Model.Foods.Any())
+        {
+            <a asp-controller="Order" asp-action="AddOrder" class="btn btn-primary">Confirm order</a>
+            <a asp-controller="Cart" asp-action="ClearCart" class="btn btn-danger">Clean basket</a>
+        }
+    </div>
+    <div class="card-footer text-muted">
+        Number of added products: @Model.Foods.Count()
+    </div>
+</div>

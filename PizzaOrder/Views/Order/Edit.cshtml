@@ -1,0 +1,49 @@
+﻿@using static PizzaOrder.Models.Order
+@model PizzaOrder.Models.Order;
+
+<div style="margin-top: 100px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif"">
+    <form method="post" asp-action="Edit">
+        <h2 class="mb-3">Edit order</h2>
+        <div class="form-group row">
+            <label asp-for="Name" class="col-4"></label>
+            <input asp-for="Name" class="form-control col-8">
+            <span asp-validation-for="Name" class="offset-4 text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label asp-for="Surname" class="col-4"></label>
+            <input asp-for="Surname" class="form-control col-8">
+            <span asp-validation-for="Surname" class="offset-4 text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label asp-for="LastName" class="col-4"></label>
+            <input asp-for="LastName" class="form-control col-8">
+            <span asp-validation-for="LastName" class="offset-4 text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label asp-for="Address" class="col-4"></label>
+            <input asp-for="Address" class="form-control col-8">
+            <span asp-validation-for="Address" class="offset-4 text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <label asp-for="Phone" class="col-4"></label>
+            <input asp-for="Phone" class="form-control col-8">
+            <span asp-validation-for="Phone" class="offset-4 text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-6">
+                <input type="submit" class="btn btn-success w-100" value="Update" />
+            </div>
+            <div class="col-6">
+                <a asp-action="Index" class="btn btn-dark w-100">Back</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+@* Client Validation *@
+@section Scripts
+{
+    @{
+    <partial name="_ValidationScriptsPartial.cshtml" />
+ }
+}
